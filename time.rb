@@ -17,6 +17,3 @@ def get_time msg
     nil
   end
 end
-pp is_enable?(get_time("20120309"))
-pp is_enable?(get_time("29120309"))
-pp is_enable?(get_time("291203iiiii09"))
