@@ -11,15 +11,12 @@ def is_enable? date
 end
 
 def get_time str
+  # 最初の文字は抜かして8文字取得
+  str = str[1,8]
   # string から Time へ
   begin
     Date.strptime(str,"%Y%m%d").to_time
   rescue 
     nil
   end
-end
-
-def cut_msg msg
-  # 最初の文字は抜かして8文字取得
-  msg[1,8]
 end
