@@ -8,11 +8,15 @@ class Test_time < Test::Unit::TestCase
   # get_time
 
   def test_get_time_true_format
-    assert_equal(get_time("020120401").class,Time)
+    assert_equal(get_time("0201204011230").class,Time)
   end
 
   def test_get_time_true_long_format
-    assert_equal(get_time("020120401jifemeofmai;ofd").class,Time)
+    assert_equal(get_time("0201204011833jifemeofmai;ofd").class,Time)
+  end
+  
+  def test_get_time_false_status
+    assert_equal(get_time("0201114010000hoge"),nil)
   end
 
   def test_get_time_false_format
@@ -32,7 +36,7 @@ class Test_time < Test::Unit::TestCase
   end
   
   def test_get_time_include_CR
-    assert_equal(get_time("02012\n0304hoge"),nil)
+    assert_equal(get_time("02012\n03040000hoge"),nil)
   end
 
 
