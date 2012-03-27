@@ -6,6 +6,7 @@ require './time.rb'
 class Test_time < Test::Unit::TestCase
 
   # get_time
+
   def test_get_time_true_format
     assert_equal(get_time("20120401").class,Time)
   end
@@ -43,6 +44,32 @@ class Test_time < Test::Unit::TestCase
   
   def test_is_enable_nil
     assert_equal(is_enable?(nil),false)
+  end
+  
+  # cut_msg
+  
+  def test_cut_msg_true_string
+    assert_equal(cut_msg("020120101x"),"20120101")
+  end
+  
+  def test_cut_msg_long_string
+    assert_equal(cut_msg("01234567890abcdefg"),"12345678")
+  end
+  
+  def test_cut_msg_short_string
+    assert_equal(cut_msg("00"),"0")
+  end
+  
+  def test_cut_msg_empty_string
+    assert_equal(cut_msg(""),nil)
+  end
+  
+  def test_cut_msg_include_multibyte_char
+    assert_equal(cut_msg("あiうeおkaきkuけko"),"iうeおkaきk")
+  end
+  
+  def test_cut_msg_all_multibyte_char
+    assert_equal(cut_msg("あいうえおかきくけこ"),"いうえおかきくけ")
   end
 
 end
