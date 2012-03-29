@@ -58,4 +58,21 @@ class Test_time < Test::Unit::TestCase
     assert_equal(is_enable?(nil),false)
   end
   
+  # get_diff
+  
+  def test_get_diff_plus_one_hour
+    assert_equal(get_diff(Time.now + 3601),
+                 {"day"=>0,"hour"=>1})
+  end
+  
+  def test_get_diff_plus_one_day
+    assert_equal(get_diff(Time.now + 1 + (24 * 60 * 60)),
+                 {"day"=>1,"hour"=>0})
+  end
+  
+  def test_get_diff_just_time
+    assert_equal(get_diff(Time.now + 1),
+                 {"day"=>0,"hour"=>0})
+  end
+  
 end
