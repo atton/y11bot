@@ -56,11 +56,9 @@ def get_footer_head str
   end
 end
 
-def get_footer_foot str
+def get_footer_foot diff
   # フッタの後半を取得する。時刻の部分。
-  # nil確認はしない(呼ぶ前にisEnable?で確認する)
 
-  diff = get_diff(get_time str)
   day = diff["day"]
   hour = diff["hour"]
 
@@ -74,5 +72,11 @@ def get_footer_foot str
     "までおよそ#{day}日と#{hour}時間です"
   else
     "まで1時間を切っています"
+  end
+end
+
+5.downto(0) do |i|
+  5.downto(0) do |j|
+    puts get_footer_foot({"day"=>i,"hour"=>j})
   end
 end
