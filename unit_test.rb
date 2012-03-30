@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 require 'test/unit'
-require './time.rb'
+require './y11bot.rb'
 
 class Test_time < Test::Unit::TestCase
 
@@ -101,5 +101,27 @@ class Test_time < Test::Unit::TestCase
 
   def test_get_footer_head_nil
     assert_equal(get_footer_head("hoge"),nil)
+  end
+  
+  # get_footer_foot
+   
+  def test_get_footer_foot_one_day_one_hour
+    assert_equal(get_footer_foot({"day"=>1,"hour"=>1}),
+                                "までおよそ1日と1時間です")
+  end
+   
+  def test_get_footer_foot_one_day_zero_hour
+    assert_equal(get_footer_foot({"day"=>1,"hour"=>0}),
+                                "までおよそ1日です")
+  end
+  
+  def test_get_footer_foot_zero_day_one_hour
+    assert_equal(get_footer_foot({"day"=>0,"hour"=>1}),
+                                "までおよそ1時間です")
+  end
+  
+  def test_get_footer_foot_zero_day_zero_hour
+    assert_equal(get_footer_foot({"day"=>0,"hour"=>0}),
+                                "まで1時間を切っています")
   end
 end

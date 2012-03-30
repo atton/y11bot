@@ -74,9 +74,3 @@ def get_footer_foot diff
     "まで1時間を切っています"
   end
 end
-
-5.downto(0) do |i|
-  5.downto(0) do |j|
-    puts get_footer_foot({"day"=>i,"hour"=>j})
-  end
-end
