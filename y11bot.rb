@@ -70,7 +70,9 @@ def get_footer_foot str
     "までおよそ#{day}日です"
   elsif day == 0 && hour >= 1
     "までおよそ#{hour}時間です"
-  else
+  elsif day >= 1 && hour >= 1
     "までおよそ#{day}日と#{hour}時間です"
+  else
+    "まで1時間を切っています"
   end
 end
