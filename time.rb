@@ -55,3 +55,22 @@ def get_footer_head str
     nil 
   end
 end
+
+def get_footer_foot str
+  # フッタの後半を取得する。時刻の部分。
+  # nil確認はしない(呼ぶ前にisEnable?で確認する)
+
+  diff = get_diff(get_time str)
+  day = diff["day"]
+  hour = diff["hour"]
+
+  if day >= 30
+    "まで30日以上あります"
+  elsif day >= 1 && hour == 0
+    "までおよそ#{day}日です"
+  elsif day == 0 && hour >= 1
+    "までおよそ#{hour}時間です"
+  else
+    "までおよそ#{day}日と#{hour}時間です"
+  end
+end
