@@ -100,23 +100,40 @@ def get_body str
   str.sub /^.*\n/,""
 end
 
+# 改善:debug時に各種テキストを改行コード付きで出力した方が分かりやすそう。putsの前後の--start--とかもいらなくなるし。
+
 def tweet dm,debug
   # tweet する
   text = get_body(dm.text) + get_footer(dm.text)
-  puts text
+
+  if debug
+    puts "POSTします"
+    puts "------ dm text start ------"
+    puts dm.text
+    puts "------- dm text end -------"
+    puts "----- post text start -----"
+    puts text
+    puts "------ post text end ------"
+    puts
+    puts
+  else
+  end
 end
 
 def delete_dm dm,debug
   # DM を削除する
-  
+
   if debug
     puts "このDMを削除します"
     puts "id : #{dm.id}"
-    puts "text : #{dm.text}"
+    puts "----- dm text start -----"
+    puts dm.text
+    puts "------ dm text end ------"
     puts
-    else
-      Twitter.direct_message_destroy dm.id
-    end
+    puts
+  else
+    Twitter.direct_message_destroy dm.id
+  end
 end
 
 # main
