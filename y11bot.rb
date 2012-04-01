@@ -80,8 +80,13 @@ end
 def get_footer str
   # フッタを取得する。
   # nil確認はしないので呼び出し前にis_enable?で要確認
-  
+  # strの先頭が0のときだけ空の文字列
+
   diff = get_diff(get_time str)
-  
-  "#{get_footer_head str}#{get_footer_foot diff}"
+
+  if get_footer_head(str).empty?
+    ""
+  else
+    "\n#{get_footer_head str}#{get_footer_foot diff}"
+  end
 end
