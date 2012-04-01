@@ -3,9 +3,11 @@
 require 'date'
 require 'pp'
 
-def is_enable? date
-  # date が Time かつ 今より後の日付かどうか確認
-  if date.class != Time
+def is_enable? str
+  # 文字列strが有効かどうか確認する
+  # get_time で時間を取得できるか get_footer_head で単語を取得できるか確認
+  # 両方取得できたら、今より先のデータか確認する
+  if get_time(date).nil? || get_footer_head(str).nil?
     return false
   end
   date > Time.now
@@ -77,7 +79,7 @@ end
 
 def get_footer str
   # フッタを取得する。
-  # nil確認はしないので呼び出し前にisEnable?で要確認
+  # nil確認はしないので呼び出し前にis_enable?で要確認
   
   diff = get_diff(get_time str)
   

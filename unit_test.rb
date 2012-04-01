@@ -40,24 +40,6 @@ class Test_time < Test::Unit::TestCase
   end
 
 
-  # is_enable?
-
-  def test_is_enable_future_date
-    assert_equal(is_enable?(Time.now + 1),true)
-  end
-
-  def test_is_enable_past_date
-    assert_equal(is_enable?(Time.now - 1),false)
-  end
-
-  def test_is_enable_just_date
-    assert_equal(is_enable?(Time.now),false)
-  end
-
-  def test_is_enable_nil
-    assert_equal(is_enable?(nil),false)
-  end
-
   # get_diff
 
   def test_get_diff_plus_one_hour
