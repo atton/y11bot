@@ -2,7 +2,7 @@
 
 require 'date'
 require 'pp'
-require 'Twitter'
+require 'twitter'
 
 DEBUG_FLG = true
 
