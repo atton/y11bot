@@ -2,6 +2,23 @@
 
 require 'date'
 require 'pp'
+require 'Twitter'
+
+# main
+
+Twitter.configure do |config|
+  config.consumer_key = gets.chomp
+  config.consumer_secret = gets.chomp
+  config.oauth_token = gets.chomp
+  config.oauth_token_secret = gets.chomp
+end
+
+Twitter.DirectMessages.each do |dm|
+  pp dm
+end
+
+
+# methods
 
 def is_enable? str
   # 文字列strが有効かどうか確認する
