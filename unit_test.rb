@@ -84,26 +84,50 @@ class Test_time < Test::Unit::TestCase
   def test_get_footer_head_nil
     assert_equal(get_footer_head("hoge"),nil)
   end
-  
+
   # get_footer_foot
-   
+
   def test_get_footer_foot_one_day_one_hour
     assert_equal(get_footer_foot({"day"=>1,"hour"=>1}),
-                                "までおよそ1日と1時間です")
+                 "までおよそ1日と1時間です")
   end
-   
+
   def test_get_footer_foot_one_day_zero_hour
     assert_equal(get_footer_foot({"day"=>1,"hour"=>0}),
-                                "までおよそ1日です")
+                 "までおよそ1日です")
   end
-  
+
   def test_get_footer_foot_zero_day_one_hour
     assert_equal(get_footer_foot({"day"=>0,"hour"=>1}),
-                                "までおよそ1時間です")
+                 "までおよそ1時間です")
   end
-  
+
   def test_get_footer_foot_zero_day_zero_hour
     assert_equal(get_footer_foot({"day"=>0,"hour"=>0}),
-                                "まで1時間を切っています")
+                 "まで1時間を切っています")
+  end
+
+  # is_enable? and get_footer
+
+  def test_is_enable_and_get_footer_many_date
+    # 負荷テスト。いろいろ試しても例外で落ちないか
+    # is_enable? が通るものはget_footerできるかどうか
+    0.upto(5) do |head|
+      2011.upto(2013) do |year|
+        0.upto(13) do |month|
+          0.upto(25) do |hour|
+            0.step(60,10) do |min|
+              str = format("%d%04d%02d%02d%02d",head,year,month,hour,min)
+              if is_enable? str
+                ans = get_footer str
+              else
+                ans = ""
+              end
+              assert_equal(ans.class,String)
+            end
+          end
+        end
+      end
+    end
   end
 end

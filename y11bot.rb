@@ -90,10 +90,3 @@ def get_footer str
     "\n#{get_footer_head str}#{get_footer_foot diff}"
   end
 end
-puts is_enable?("0201204010000")
-puts is_enable?("1201204010000")
-puts is_enable?("3201204010000")
-puts is_enable?("5201204010000")
-puts is_enable?("6201204010000")
-puts is_enable?("0201204030000")
-puts is_enable?("2201204030000")
