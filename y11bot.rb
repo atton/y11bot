@@ -90,3 +90,8 @@ def get_footer str
     "\n#{get_footer_head str}#{get_footer_foot diff}"
   end
 end
+
+def get_body str
+  # str の2行目以降を返す
+  str.sub /^.*\n/,""
+end

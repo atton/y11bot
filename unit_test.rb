@@ -106,7 +106,25 @@ class Test_time < Test::Unit::TestCase
     assert_equal(get_footer_foot({"day"=>0,"hour"=>0}),
                  "まで1時間を切っています")
   end
+  
+  # get_body
+  
+  def test_get_body_one_line
+    assert_equal(get_body("100\n"),"")
+  end
 
+  def test_get_body_two_line
+    assert_equal(get_body("100\n2\n"),"2\n")
+  end
+
+  def test_get_body_three_line
+    assert_equal(get_body("100\n200\n3\n"),"200\n3\n")
+  end
+  
+  def test_get_body_no_line
+    assert_equal(get_body("hoge"),"hoge")
+  end
+  
   # is_enable? and get_footer
 
   def test_is_enable_and_get_footer_many_date
