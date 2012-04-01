@@ -4,6 +4,7 @@ require 'date'
 require 'pp'
 require 'Twitter'
 
+DEBUG_FLG = true
 
 # methods
 
@@ -107,7 +108,7 @@ def tweet dm,debug
   text = get_body(dm.text) + get_footer(dm.text)
 
   if debug
-    puts "POSTします"
+    puts "*POSTします*"
     puts "------ dm text start ------"
     puts dm.text
     puts "------- dm text end -------"
@@ -117,6 +118,7 @@ def tweet dm,debug
     puts
     puts
   else
+    Twitter.update text
   end
 end
 
@@ -124,7 +126,7 @@ def delete_dm dm,debug
   # DM を削除する
 
   if debug
-    puts "このDMを削除します"
+    puts "*このDMを削除します*"
     puts "id : #{dm.id}"
     puts "----- dm text start -----"
     puts dm.text
@@ -138,8 +140,6 @@ end
 
 # main
 # TODO:fileにmethosを分割する。cronを使うので絶対パスの必要アリ
-
-DEBUG_FLG = true
 
 Twitter.configure do |config|
   config.consumer_key = gets.chomp
