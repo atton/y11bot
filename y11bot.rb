@@ -7,10 +7,10 @@ def is_enable? str
   # 文字列strが有効かどうか確認する
   # get_time で時間を取得できるか get_footer_head で単語を取得できるか確認
   # 両方取得できたら、今より先のデータか確認する
-  if get_time(date).nil? || get_footer_head(str).nil?
+  if get_time(str).nil? || get_footer_head(str).nil?
     return false
   end
-  date > Time.now
+  get_time(str) > Time.now
 end
 
 def get_time str
@@ -90,3 +90,10 @@ def get_footer str
     "\n#{get_footer_head str}#{get_footer_foot diff}"
   end
 end
+puts is_enable?("0201204010000")
+puts is_enable?("1201204010000")
+puts is_enable?("3201204010000")
+puts is_enable?("5201204010000")
+puts is_enable?("6201204010000")
+puts is_enable?("0201204030000")
+puts is_enable?("2201204030000")
