@@ -106,9 +106,9 @@ class Test_time < Test::Unit::TestCase
     assert_equal(get_footer_foot({"day"=>0,"hour"=>0}),
                  "まで1時間を切っています")
   end
-  
+
   # get_body
-  
+
   def test_get_body_one_line
     assert_equal(get_body("100\n"),"")
   end
@@ -120,11 +120,11 @@ class Test_time < Test::Unit::TestCase
   def test_get_body_three_line
     assert_equal(get_body("100\n200\n3\n"),"200\n3\n")
   end
-  
+
   def test_get_body_no_line
     assert_equal(get_body("hoge"),"hoge")
   end
-  
+
   # is_enable? and get_footer
 
   def test_is_enable_and_get_footer_many_date
@@ -133,15 +133,14 @@ class Test_time < Test::Unit::TestCase
     0.upto(5) do |head|
       2011.upto(2013) do |year|
         0.upto(13) do |month|
-          0.upto(25) do |hour|
-            0.step(60,10) do |min|
-              str = format("%d%04d%02d%02d%02d",head,year,month,hour,min)
-              if is_enable? str
-                ans = get_footer str
-              else
-                ans = ""
+          0.upto(32) do |day|
+            0.upto(25) do |hour|
+              0.step(60,10) do |min|
+                str = format("%d%04d%02d%02d%02d%02d",head,year,month,day,hour,min)
+                if is_enable? str
+                  assert_equal((get_footer str).class,String)
+                end
               end
-              assert_equal(ans.class,String)
             end
           end
         end
