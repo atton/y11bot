@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 require 'test/unit'
-require './y11bot.rb'
+require './dm.rb'
 
 class Test_time < Test::Unit::TestCase
 
