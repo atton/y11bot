@@ -6,8 +6,6 @@ require "#{File.dirname(File.expand_path __FILE__)}/dm.rb"
 DEBUG_FLG = true
 
 
-# 改善:debug時に各種テキストを改行コード付きで出力した方が分かりやすそう。putsの前後の--start--とかもいらなくなるし。
-
 def tweet dm,debug
   # tweet する
   text = get_body(dm.text) + get_footer(dm.text)
@@ -20,7 +18,6 @@ def tweet dm,debug
     puts "----- post text start -----"
     puts text
     puts "------ post text end ------"
-    puts
     puts
   else
     Twitter.update text
@@ -44,7 +41,6 @@ def delete_dm dm,debug
 end
 
 # main
-# TODO:fileにmethosを分割する。cronを使うので絶対パスの必要アリ
 
 Twitter.configure do |config|
   config.consumer_key = gets.chomp
