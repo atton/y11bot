@@ -18,6 +18,7 @@ def tweet dm,debug
     puts "----- post text start -----"
     puts text
     puts "------ post text end ------"
+    puts text.length
     puts
   else
     Twitter.update text
